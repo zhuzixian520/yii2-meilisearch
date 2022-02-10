@@ -1,0 +1,30 @@
+{
+    "name": "zhuzixian520/yii2-meilisearch",
+    "description": "This extension provides the MeiliSearch integration for the Yii framework 2.0. ",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trevor",
+            "email": "zhuzixian520@126.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "zhuzixian520\\meilisearch\\": "src"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
