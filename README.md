@@ -7,6 +7,7 @@
     <br>
 </p>
 
+![Build](https://api.travis-ci.com/zhuzixian520/yii2-meilisearch.svg?branch=master&status=unknown)
 
 This extension provides the MeiliSearch integration for the Yii framework 2.0. 
 
