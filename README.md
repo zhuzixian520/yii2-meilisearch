@@ -52,13 +52,43 @@ return [
 ### Work with this component
 
 ```php
-$meilisearch = \Yii::$app->meilisearch;
+$ms = \Yii::$app->meilisearch;
 
 // Set API keys From your master Key
-$meilisearch->apiKey = 'xxxx';
+$ms->apiKey = 'xxxx';
+
+$msc = $ms->createCommand();
 
 //The health check endpoint enables you to periodically test the health of your Meilisearch instance
-$meilisearch->createCommand()->health;
+$msc->health;
+```
+
+### Indexes
+
+```php
+//$res = $msc->allIndexes;
+//$res = $msc->createIndex('movies', 'id');
+//$res = $msc->updateIndex('movies', 'id');
+//$res = $msc->deleteIndex('movies');
+$msci = $msc->index('movies');
+//$res = $msci->info;
+//$res = $msci->update('id');
+//$res = $msci->delete();
+```
+
+### Documents
+
+```php
+$res = $msci->getDocument(25684);
+$res = $msci->getDocuments(['offset' => 0, 'limit' => 2, 'attributesToRetrieve' => '*']);
+/*$file_name = Yii::getAlias('@app/runtime/') . 'movies.json';
+$movies_json = file_get_contents($file_name);
+$movies = json_decode($movies_json, true);
+$res = $msci->addDocuments($movies,'id');*/
+//$res = $msci->updateDocuments($movies,'id');
+//$res = $msci->deleteAllDocuments();
+//$res = $msci->deleteDocument(100);
+//$res = $msci->deleteDocuments([10001, 100017]);
 ```
 
 ### Search
@@ -68,13 +98,129 @@ $res = $meilisearch->createCommand()->index('movies')->search(['q' => 'saw', 'li
 var_dump($res);
 ```
 
-### Contact Us
+### Task
+```php
+$res = $msc->tasks;
+$res = $msc->getTask(4);
+$res = $msci->getTasks();
+$res = $msci->getTask(8);
+```
 
+### Keys
+```php
+//$res = $msc->keys;
+//$res = $msc->getKey('9bFPJSxkc0e7939d743e110b354fe3625876cfec14efb4301bf195f6aed4a57f1d9004fa');
+/*$res = $msc->createKey([
+'description' => 'Add documents: Products API key',
+'actions' => ['documents.add'],
+'indexes' => ['products'],
+'expiresAt' => '2042-04-02T00:42:42Z',
+]);*/
+/*$res = $msc->updateKey('yKEcAaQX547e46c7d8eaa1224f6a5196c5c7a13f47932cbeb1ba06db962b379cb0ef19e4', [
+'description' => 'Add documents: Products API key',
+'actions' => ['documents.add'],
+'indexes' => ['products'],
+'expiresAt' => '2043-04-02T00:42:42Z',
+]);*/
+//$res = $msc->deleteKey('qAZlXnA191d328ea51fb26b822fecc556c38c0a3af1caa95962ede60a0155381a39a3a36');
+```
+
+### Settings
+```php
+$res = $msci->settings;
+/*$res = $msci->updateSettings([
+'displayedAttributes' => ['*'],
+'distinctAttribute' => null,
+'filterableAttributes' => [],
+'rankingRules' => [
+'words',
+'typo',
+'proximity',
+'attribute',
+'sort',
+'exactness',
+'release_date:desc',
+'rank:desc'
+],
+'searchableAttributes' => ['*'],
+'sortableAttributes' => [],
+'stopWords' => [
+'the',
+'a',
+'an'
+],
+'synonyms' => [
+'wolverine' => ['xmen', 'logan'],
+'logan' => ['wolverine']
+]
+]);*/
+//$res = $msci->resetSettings();
+//$res = $msci->displayedAttrs;
+//$res = $msci->updateDisplayedAttrs(['*']);
+//$res = $msci->resetDisplayedAttrs();
+/*$res = $msci->distinctAttr;
+$res = $msci->updateDistinctAttr('id');
+$res = $msci->resetDistinctAttr();
+$res = $msci->filterableAttrs;
+$res = $msci->updateFilterableAttrs([]);
+$res = $msci->resetFilterableAttrs();
+$res = $msci->rankingRules;
+$res = $msci->updateRankingRules([
+'words',
+'typo',
+'proximity',
+'attribute',
+'sort',
+'exactness',
+'release_date:desc',
+'rank:desc'
+]);
+$res = $msci->resetRankingRules();
+$res = $msci->searchableAttrs;
+$res = $msci->updateSearchableAttrs(['*']);
+$res = $msci->resetSearchableAttrs();
+$res = $msci->sortableAttrs;
+$res = $msci->updateSortableAttrs([]);
+$res = $msci->resetSortableAttrs();
+$res = $msci->stopWords;
+$res = $msci->updateStopWords([
+'the',
+'a',
+'an'
+]);
+$res = $msci->resetStopWords();
+$res = $msci->synonyms;
+$res = $msci->updateSynonyms([
+'wolverine' => ['xmen', 'logan'],
+'logan' => ['wolverine']
+]);
+$res = $msci->resetSynonyms();*/
+```
+
+### Stats
+```php
+//$res = $msc->stats;
+//$res = $msci->stats;
+```
+### Health
+```php
+$msc->health;
+```
+### Version
+```php
+$msc->version;
+```
+### Dumps
+```php
+$res = $msc->createDump();
+//$res = $msc->getDumpStatus('20220211-145911299');
+var_dump($res);
+```
+
+## Contact Us
 >Email：zhuzixian520@126.com
 
-
 ## Sponsorship and donation:
-
 <p align="center">
     <img src="wepay.jpg" width="25%">
     <img src="alipay.jpg" width="25%">

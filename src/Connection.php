@@ -358,7 +358,10 @@ class Connection extends Component
             Yii::endProfile($profile, __METHOD__);
         }
 
-        if ($responseCode >= 200 && $responseCode < 300) {
+        //204返回的headers 只有date字段，没有content-length 与 content-type
+        if ($responseCode === 204) {
+            return null;
+        } elseif ($responseCode >= 200 && $responseCode < 300) {
             if ($method === 'HEAD') {
                 return true;
             } else {
