@@ -7,6 +7,9 @@
     <br>
 </p>
 
+[![Latest Stable Version](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/v)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![Total Downloads](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/downloads)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![Latest Unstable Version](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/v/unstable)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![License](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/license)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![PHP Version Require](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/require/php)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
+[![Dependents](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/dependents)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
+[![Suggesters](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/suggesters)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
 ![Build](https://api.travis-ci.com/zhuzixian520/yii2-meilisearch.svg?branch=master&status=unknown)
 
 This extension provides the MeiliSearch integration for the Yii framework 2.0. 
@@ -18,7 +21,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist zhuzixian520/yii2-meilisearch "*"
+composer require --prefer-dist zhuzixian520/yii2-meilisearch "*"
 ```
 
 or add
