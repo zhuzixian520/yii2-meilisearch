@@ -1,16 +1,17 @@
-<p align="center">
+<div style="text-align: center">
     <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-        <img src="logo_meilisearch.png" height="100px">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100" alt="yii2 logo">
+        <img src="logo_meilisearch.png" height="100" alt="meilisearch logo">
     </a>
-    <h1 align="center">MeiliSearch Extension For Yii2 Framework</h1>
+    <h1>MeiliSearch Extension For Yii2 Framework</h1>
     <br>
-</p>
+</div>
 
 [![Latest Stable Version](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/v)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![Total Downloads](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/downloads)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![Latest Unstable Version](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/v/unstable)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![License](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/license)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch) [![PHP Version Require](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/require/php)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
 [![Dependents](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/dependents)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
 [![Suggesters](http://poser.pugx.org/zhuzixian520/yii2-meilisearch/suggesters)](https://packagist.org/packages/zhuzixian520/yii2-meilisearch)
-![Build](https://api.travis-ci.com/zhuzixian520/yii2-meilisearch.svg?branch=master&status=unknown)
+
+## English | [简体中文](./README.zh-CN.md) | [繁體中文](./README.zh-TW.md)
 
 This extension provides the MeiliSearch integration for the Yii framework 2.0. 
 
@@ -21,13 +22,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require --prefer-dist zhuzixian520/yii2-meilisearch "*"
+composer require zhuzixian520/yii2-meilisearch
 ```
 
 or add
 
 ```
-"zhuzixian520/yii2-meilisearch": "*"
+"zhuzixian520/yii2-meilisearch": "^1.0"
 ```
 
 to the require section of your `composer.json` file.
