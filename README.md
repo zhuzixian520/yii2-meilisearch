@@ -1,7 +1,7 @@
-<div style="text-align: center">
+<div align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100" alt="yii2 logo">
-        <img src="logo_meilisearch.png" height="100" alt="meilisearch logo">
+        <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/main/assets/logos/logo.svg" height="100" alt="meilisearch logo">
     </a>
     <h1>MeiliSearch Extension For Yii2 Framework</h1>
     <br>
@@ -226,6 +226,6 @@ var_dump($res);
 
 ## Sponsorship and donation:
 <p align="center">
-    <img src="wepay.jpg" width="25%">
-    <img src="alipay.jpg" width="25%">
+    <img src="/images/wepay.jpg" width="28%">
+    <img src="/images/alipay.jpg" width="28%">
 </p>
