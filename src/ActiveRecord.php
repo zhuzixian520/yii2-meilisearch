@@ -87,13 +87,58 @@ class ActiveRecord extends BaseActiveRecord
         }
 
         $values = $this->getDirtyAttributes($attributes);
-        var_dump($this->getPrimaryKeyName());exit;
 
         $response = static::getDb()->createCommand()
             ->index(static::index())
             ->addDocuments([$values], $this->getPrimaryKeyName());
 
+        if ($response === false) {
+            return false;
+        }
+
+        $changedAttributes = array_fill_keys(array_keys($values), null);
+        $this->setOldAttributes($values);
+        $this->afterSave(true, $changedAttributes);
+
         return true;
+    }
+
+    public function update($runValidation = true, $attributeNames = null)
+    {
+        if ($runValidation && !$this->validate($attributeNames)) {
+            return false;
+        }
+
+        return $this->updateInternal($attributeNames);
+    }
+
+    protected function updateInternal($attributes = null)
+    {
+        if (!$this->beforeSave(false)) {
+            return false;
+        }
+        $values = $this->getDirtyAttributes($attributes);
+        if (empty($values)) {
+            $this->afterSave(false, $values);
+            return 0;
+        }
+
+        $result = static::getDb()->createCommand()
+            ->index(static::index())
+            ->updateDocuments([$values], $this->getPrimaryKeyName());
+
+        $changedAttributes = [];
+        foreach ($values as $name => $value) {
+            $changedAttributes[$name] = $this->getOldAttribute($name);
+            $this->setOldAttribute($name, $value);
+        }
+        $this->afterSave(false, $changedAttributes);
+
+        if ($result === false) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     /**
