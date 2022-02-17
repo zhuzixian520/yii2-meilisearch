@@ -21,15 +21,45 @@ use yii\helpers\StringHelper;
  *
  * You may override [[index()]] to define the index.
  *
+ * The following is an example model called `Movie`:
+ *
+ * ```php
+ *
+ * use zhuzixian520\meilisearch\ActiveRecord;
+ *
+ * class Movie extends ActiveRecord
+ * {
+ *     public static function index()
+ *     {
+ *          return 'movies';
+ *     }
+ *
+ *     public function attributes()
+ *     {
+ *         return ['id', 'title', 'poster', 'overview', 'release_date', 'genres'];
+ *     }
+ * }
+ * ```
+ *
+ *
+ *
+ * @property mixed|null $primaryKey
+ *
  * @author Trevor <zhuzixian520@126.com>
  * @since 1.0.1
  */
 class ActiveRecord extends BaseActiveRecord
 {
-    public $id;
-
     /**
+     * This method defines the attribute that uniquely identifies a record.
+     * The name of the primary key attribute is `id`, and can be changed.
+     *
+     * Meilisearch does not support composite primary keys in the traditional sense. However to match the signature
+     * of the [[\yii\db\ActiveRecordInterface|ActiveRecordInterface]] this methods returns an array instead of a
+     * single string.
+     *
      * @inheritdoc
+     * @return string[] array of primary key attributes. Only the first element of the array will be used.
      */
     public static function primaryKey()
     {
@@ -57,9 +87,11 @@ class ActiveRecord extends BaseActiveRecord
         }
 
         $values = $this->getDirtyAttributes($attributes);
-        var_dump($this->getPrimaryKey());exit;
+        var_dump($this->getPrimaryKeyName());exit;
 
-        //$response = static::getDb()->createCommand()->index(static::index())->addDocuments([$values], $this->getPrimaryKey());
+        $response = static::getDb()->createCommand()
+            ->index(static::index())
+            ->addDocuments([$values], $this->getPrimaryKeyName());
 
         return true;
     }
@@ -101,19 +133,14 @@ class ActiveRecord extends BaseActiveRecord
         return Inflector::pluralize(Inflector::camel2id(StringHelper::basename(get_called_class()), '_'));
     }
 
-    /**
-     * @inheritdoc
-     * @param $asArray
-     * @return array|mixed|null
-     */
-    public function getPrimaryKey($asArray = false)
+    public function getPrimaryKeyName()
     {
-        $pk = static::primaryKey()[0];
-        if ($asArray) {
-            return [$pk => $this->$pk];
-        } else {
-            return $this->$pk;
+        if (isset(static::primaryKey()[0])) {
+            $pk = static::primaryKey()[0];
+        }else {
+            throw new InvalidConfigException('The primaryKey() method of Meilisearch ActiveRecord implemented by child classes cant not be empty.');
         }
 
+        return $pk;
     }
 }
