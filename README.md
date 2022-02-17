@@ -1,6 +1,8 @@
 <div align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100" alt="yii2 logo">
+    </a>
+    <a href="https://github.com/meilisearch" target="_blank">
         <img src="https://raw.githubusercontent.com/meilisearch/integration-guides/main/assets/logos/logo.svg" height="100" alt="meilisearch logo">
     </a>
     <h1>MeiliSearch Extension For Yii2 Framework</h1>
