@@ -7,4 +7,4 @@
 
 First Release.
 This extension provides the MeiliSearch integration for the Yii framework 2.0.
-You can use the official RESTful API via the YII2 component.
+You can use the official RESTful API via the Yii2 component.
